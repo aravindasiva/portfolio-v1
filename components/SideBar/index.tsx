@@ -31,7 +31,7 @@ const SideBar = () => {
     },
     animate: {
       opacity: [0, 1],
-      scale: [1, 1.05, 1],
+      scale: [0.7, 1.09, 1],
       transition: {
         duration: DURATIONS.VerySlow,
         ease: easing,
@@ -39,7 +39,7 @@ const SideBar = () => {
     },
     lightMode: {
       opacity: [0, 1],
-      scale: [0.99, 1.05, 1],
+      scale: [0.7, 1.09, 1],
       transition: {
         duration: DURATIONS.VerySlow,
         ease: easing,
