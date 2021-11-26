@@ -11,7 +11,8 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
-import { fadeInUp, letterSpace, simpleOpacity, stagger } from '../../config/animation'
+import { useInView } from 'react-intersection-observer'
+import { fadeInUp, fadeInUpSlower, letterSpace, letterSpaceBig, simpleOpacity, stagger } from '../../config/animation'
 import styles from './styles.module.css'
 
 const SideBar = () => {
@@ -56,6 +57,7 @@ const SideBar = () => {
   const MotionText = motion(Text)
   const MotionStack = motion(Stack)
   const MotionButton = motion(Button)
+  const [ref, inView] = useInView()
 
   return (
     <MotionBox
@@ -107,10 +109,11 @@ const SideBar = () => {
             className={styles.marginTopForce}
             as="h2"
             size="4xl"
+            // w={68}
             // paddingRight={{ lg: '20' }}
             textTransform="uppercase"
-            whileHover={{ scale: 1.3 }}
-            variants={letterSpace}
+            whileHover={{ scale: 1.4, x: 90 }}
+            variants={letterSpaceBig}
             fontFamily={'Mont'}
           >
             Siva
@@ -137,13 +140,13 @@ const SideBar = () => {
             variants={fadeInUp}
             maxWidth={{ base: '100%', lg: '80%' }}
           >
-            Hey! How nice of you to look at my personal site,
+            Hey! Nice of you to visit my personal site,
             <Text variant="emphasis" as="span">
               {' '}
-              Thank you!<br/>
+              Thank you!<br />
             </Text>
-            <br />I am software engineer that specializes at backend apis, front
-            end integration, recently found myself studying UX too.
+            <br />I am Full Stack developer that specializes at forntend, back
+            end integration, If you are lucky you can catch me doing some UX design.
           </MotionText>
           <MotionButton
             size="lg"
@@ -159,7 +162,13 @@ const SideBar = () => {
             as={'a'}
             href="mailto:aravindcva@hotmail.com"
             target="_blank"
-            whileHover={{ scale: 1.3 }}
+            whileHover={{
+              rotate: [0, 25, 0, -25, 0],
+              transition: {
+                duration: 0.6,
+                ease: easing,
+              },
+            }}
             whileTap={{ scale: 0.9 }}
             fontFamily={'Inter'}
           >

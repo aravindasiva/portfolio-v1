@@ -4,6 +4,7 @@ const DURATIONS = {
   Normal: 0.8,
   Slow: 1.2,
   VerySlow: 1.8,
+  SlowAf: 2.5
 }
 const easing = [0.6, -0.05, 0.01, 0.99]
 
@@ -46,6 +47,20 @@ const letterSpace = {
     opacity: 1,
     transition: {
       duration: DURATIONS.Slow,
+      ease: easing,
+    },
+  },
+}
+
+const letterSpaceBig = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    letterSpacing: ['0px','20px',  '0px'],
+    opacity: 1,
+    transition: {
+      duration: DURATIONS.SlowAf,
       ease: easing,
     },
   },
@@ -145,6 +160,7 @@ export {
   fadeInUp,
   fadeInUpSlower,
   letterSpace,
+  letterSpaceBig,
   stagger,
   galleryStagger,
   simpleOpacity,
