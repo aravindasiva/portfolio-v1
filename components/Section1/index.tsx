@@ -9,7 +9,7 @@ const Section1 = () => {
   return (
     <Box
       id="section1"
-      minH='100vh'
+      minH='80vh'
       display='flex'
       flexDirection='column'
       justifyContent='center'

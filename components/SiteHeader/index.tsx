@@ -12,10 +12,11 @@ import {
   Box,
   VStack,
   Button,
-  Text
+  Text,
+  Container
 } from "@chakra-ui/react";
 import { Link } from 'react-scroll';
-import { useViewportScroll } from "framer-motion";
+import { AnimatePresence, motion, useViewportScroll } from "framer-motion";
 import { FaMoon, FaSun, FaHeart } from "react-icons/fa";
 import {
   AiFillGithub,
@@ -24,13 +25,19 @@ import {
   AiOutlineInbox,
 } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
+import useScrollDirection from "../../hooks/useScrollDirection";
+import { easing, menuAnim, scaleUp } from "../../config/animation";
 
 const SiteHeader = () => {
+  const direction = useScrollDirection()
   const mobileNav = useDisclosure();
+  const MotionBox = motion(Box)
 
   const { toggleColorMode: toggleMode } = useColorMode();
   const text = useColorModeValue("dark", "light");
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+  const { colorMode } = useColorMode()
+  const MotionContainer = motion(Container)
 
   const bg = useColorModeValue("white", "gray.800");
   const ref = React.useRef<HTMLInputElement>();
@@ -44,13 +51,13 @@ const SiteHeader = () => {
 
   const MobileNavContent = (
     <VStack
-      pos="absolute"
+      pos="fixed"
       top={0}
       left={0}
       right={0}
       display={mobileNav.isOpen ? "flex" : "none"}
       flexDirection="column"
-      p={2}
+      p={6}
       pb={4}
       m={2}
       bg={bg}
@@ -63,31 +70,78 @@ const SiteHeader = () => {
         justifySelf="self-start"
         onClick={mobileNav.onClose}
       />
-      <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-        Dashboard
-      </Button>
-      <Button
-        w="full"
-        variant="ghost"
-        colorScheme="brand"
-
-        leftIcon={<AiOutlineInbox />}
-      >
-        Inbox
-      </Button>
-      <Button
-        w="full"
-        variant="ghost"
-
-        leftIcon={<BsFillCameraVideoFill />}
-      >
-        Videos
-      </Button>
+      <Link activeClass="active" to='siteHeader' spy={true} smooth={true} duration={1000}>
+        <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
+          About
+        </Text>
+      </Link>
+      <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
+        <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
+          Experience
+        </Text>
+      </Link>
+      <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
+        <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
+          Contact
+        </Text>
+      </Link>
     </VStack>
   );
 
+  const SideNav = (
+    <MotionContainer
+      display={{ base: 'none', sm: 'block', lg: 'block' }}
+      w='100%'
+      initial={direction.isTop && "hide"}
+      animate="show"
+      ease={easing}
+      variants={menuAnim}
+    >
+      <VStack
+        pos="fixed"
+        top={0}
+        right={0}
+        display={direction.isTop ? "none" : "flex"}
+        flexDirection="column"
+        p={10}
+        pt={16}
+        m={2}
+        spacing={6}
+        alignItems='flex-start'
+      >
+        <Link activeClass="active" to='siteHeader' spy={true} smooth={true} duration={1000}>
+          <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
+            About
+          </Text>
+        </Link>
+        <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
+          <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
+            Experience
+          </Text>
+        </Link>
+        <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
+          <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
+            Contact
+          </Text>
+        </Link>
+        <IconButton
+          size="md"
+          fontSize="lg"
+          aria-label={`Switch to ${text} mode`}
+          variant="ghost"
+          color="current"
+          isRound
+          ml={{ base: "0", md: "3" }}
+          onClick={toggleMode}
+          icon={<SwitchIcon size={24} />}
+        />
+      </VStack>
+    </MotionContainer>
+  )
+
+
   return (
-    <Box pos="relative">
+    <Box id='siteHeader' pos="relative">
       <chakra.header
         ref={ref}
         shadow={y > height ? "sm" : undefined}
@@ -97,11 +151,11 @@ const SiteHeader = () => {
         overflowY="hidden"
       >
         <chakra.div h="4.5rem" mx="auto" >
-          <Flex w="full" h="full" px={{base: 6, sm:"20"}} align="center" justify="space-between">
+          <Flex w="full" h="full" px={{ base: 6, sm: "20" }} align="center" justify="space-between">
             <Flex align="center">
-                <HStack>
-                  <Box>Logo</Box>
-                </HStack>
+              <HStack>
+                <Box>Logo</Box>
+              </HStack>
             </Flex>
 
             <Flex
@@ -150,6 +204,21 @@ const SiteHeader = () => {
             </Flex>
           </Flex>
           {MobileNavContent}
+          <MotionBox
+            id={direction.isTop}
+            initial='hide'
+            animate='show'
+            ease={easing}
+            variant={menuAnim}
+          >
+            <motion.div
+              id="side nav"
+              animate={colorMode === 'dark' ? 'animate' : 'lightMode'}
+            >
+              {SideNav}
+            </motion.div>
+          </MotionBox >
+
         </chakra.div>
       </chakra.header>
     </Box>

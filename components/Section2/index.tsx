@@ -13,6 +13,7 @@ const Section2 = () => {
         flexDirection='column'
         justifyContent='center'
         alignItems='center'
+        bg='red'
       >
         <Text fontSize='4xl'>Some more cool content</Text>
       </Box>
