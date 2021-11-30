@@ -81,7 +81,7 @@ const ScrollHelper = () => {
         )}
       </AnimatePresence>
       <AnimatePresence>
-        {direction.isTop === false && (
+        {(!direction.isTop && direction.isDown) && (
           <motion.div
             initial="hidden"
             animate="show"
@@ -98,7 +98,9 @@ const ScrollHelper = () => {
             <Text
               as="a"
               paddingY={3}
-              fontFamily="monospace"
+              fontFamily="Inter"
+              fontWeight='400'
+              fontSize={14}
               href="mailto:aravindcva@hotmail.com"
               target="_blank"
               rel="noreferrer"
