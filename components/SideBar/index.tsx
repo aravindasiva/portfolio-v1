@@ -9,10 +9,14 @@ import {
   Box,
   Icon,
   useBreakpointValue,
+  useColorModeValue,
+  HStack,
 } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import React from 'react'
 import { useInView } from 'react-intersection-observer'
-import { fadeInUp, fadeInUpSlower, letterSpace, letterSpaceBig, simpleOpacity, stagger } from '../../config/animation'
+import { fadeInUp, fadeInUpSlower, iconScale, letterSpace, letterSpaceBig, simpleOpacity, stagger } from '../../config/animation'
+import { SocialMedias } from '../../config/sideBar'
 import styles from './styles.module.css'
 
 const SideBar = () => {
@@ -50,9 +54,10 @@ const SideBar = () => {
   }
 
   const { colorMode } = useColorMode()
+  const borderColor = useColorModeValue("gray.800", "#97DFFC");
+  const surNameSize = useBreakpointValue({ base: '3xl', md: '4xl' })
   const display = useBreakpointValue({ base: 'none', lg: 'block' })
   const MotionBox = motion(Box)
-  const surNameSize = useBreakpointValue({ base: '3xl', md: '4xl' })
   const MotionHeading = motion(Heading)
   const MotionText = motion(Text)
   const MotionStack = motion(Stack)
@@ -112,7 +117,8 @@ const SideBar = () => {
             // w={68}
             // paddingRight={{ lg: '20' }}
             textTransform="uppercase"
-            whileHover={{ scale: 1.4, x: 90 }}
+            whileHover={iconScale}
+            // whileHover={{ scale: 1.4, x: 90 }}
             variants={letterSpaceBig}
             fontFamily={'Mont'}
           >
@@ -125,6 +131,7 @@ const SideBar = () => {
             variant="emphasis"
             className={styles.marginTopSmall}
             variants={fadeInUp}
+            color={borderColor}
             fontFamily={'Mont'}
             fontWeight={300}
           >
@@ -145,15 +152,16 @@ const SideBar = () => {
               {' '}
               Thank you!<br />
             </Text>
-            <br />I am Full Stack developer that specializes at forntend, back
-            end integration, If you are lucky you can catch me doing some UX design.
+            <br />I am Full Stack developer that specializes at frontend, backend integration, If you are lucky you can catch me doing some UX design.
           </MotionText>
           <MotionButton
             size="lg"
             variant="outline"
-            borderWidth="4px"
+            borderWidth="3.5px"
             borderTopColor='transparent'
             borderBottomColor='transparent'
+            borderLeftColor={borderColor}
+            borderRightColor={borderColor}
             borderRadius="full"
             fontWeight="600"
             fontSize="sm"
@@ -163,7 +171,7 @@ const SideBar = () => {
             href="mailto:aravindcva@hotmail.com"
             target="_blank"
             whileHover={{
-              rotate: [0, 25, 0, -25, 0],
+              rotate: [0, 25, 30, 0, -30, -25, 0],
               transition: {
                 duration: 0.6,
                 ease: easing,
@@ -175,22 +183,24 @@ const SideBar = () => {
             Get in touch!
           </MotionButton>
 
-          <MotionBox d="flex" variants={simpleOpacity}>
-            {/* {SocialMedias.map((socMedia) => (
-              <Link
-                variant="description"
-                key={socMedia.label}
-                aria-label={socMedia.label}
-                rel="noreferrer"
-                width={8}
-                href={socMedia.href}
-                target="_blank"
-                _focus={{ boxShadow: 'none' }}
-              >
-                <Icon w={6} h={6} as={socMedia.icon} color="currentColor" />
-              </Link>
-            ))} */}
-          </MotionBox>
+          <HStack>
+            {SocialMedias.map((socMedia) => (
+              <MotionBox d="flex" variants={simpleOpacity} whileHover={{ scale: 1.5 }}>
+                <Link
+                  variant="description"
+                  key={socMedia.label}
+                  aria-label={socMedia.label}
+                  rel="noreferrer"
+                  width={8}
+                  href={socMedia.href}
+                  target="_blank"
+                  _focus={{ boxShadow: 'none' }}
+                >
+                  <Icon w={6} h={6} as={socMedia.icon} color="currentColor" _hover={{ color: 'borderColor' }} />
+                </Link>
+              </MotionBox>
+            ))}
+          </HStack>
         </MotionStack>
       </Container>
     </MotionBox>

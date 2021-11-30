@@ -6,6 +6,8 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react'
 import React from 'react'
+import ScrollHelper from '../components/ScrollHelper'
+import ScrollMore from '../components/ScrollHelper'
 import Section1 from '../components/Section1'
 import Section2 from '../components/Section2'
 import Section3 from '../components/Section3'
@@ -95,6 +97,7 @@ export default function Home() {
           </Stack>
         </GridItem>
       </Grid>
+      <ScrollHelper />
     </>
   )
 }
