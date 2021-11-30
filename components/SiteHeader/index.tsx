@@ -184,6 +184,7 @@ const SiteHeader = () => {
               </HStack>
               <IconButton
                 size="md"
+                isRound
                 fontSize="lg"
                 aria-label={`Switch to ${text} mode`}
                 variant="ghost"

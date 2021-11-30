@@ -79,6 +79,20 @@ const simpleOpacity = {
   },
 }
 
+const iconScale = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    scale: [1, 1.02, 1],
+    transition: {
+      duration: DURATIONS.Fast,
+      ease: easing,
+    },
+  },
+}
+
 const scaleUp = {
   initial: {
     scale: 0,
@@ -166,5 +180,6 @@ export {
   simpleOpacity,
   menuAnim,
   scaleUp,
+  iconScale,
   avatarAnimation,
 }
