@@ -65,6 +65,10 @@ const Colors = {
     light: '#808191',
     label: '#12364F'
   },
+  site: {
+    light: '#E23E57',
+    dark: '#3FC1C9'
+  }
 }
 
 export default Colors

@@ -2,12 +2,13 @@ import { Global } from "@emotion/react"
 const Fonts = () => (
   <Global
     styles={`
+
       @font-face {
-        font-family: 'Gilroy';
+        font-family: 'Mont';
         font-style: normal;
         font-weight: bold;
-        src: url('./fonts/Gilroy-Bold.otf') format('opentype');
-      }
+        src: url('./fonts/Mont-Bold.ttf') format('truetype');
+      },
       `}
   />
 )
