@@ -65,6 +65,10 @@ const Colors = {
     light: '#808191',
     label: '#12364F'
   },
+  primary: {
+    light: '#52734D',
+    dark: '#91C788'
+  }
 }
 
 export default Colors

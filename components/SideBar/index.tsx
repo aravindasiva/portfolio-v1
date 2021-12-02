@@ -54,7 +54,7 @@ const SideBar = () => {
   }
 
   const { colorMode } = useColorMode()
-  const borderColor = useColorModeValue("gray.800", "#97DFFC");
+  const borderColor = useColorModeValue("#E23E57", "#3FC1C9");
   const surNameSize = useBreakpointValue({ base: '3xl', md: '4xl' })
   const display = useBreakpointValue({ base: 'none', lg: 'block' })
   const MotionBox = motion(Box)
@@ -93,10 +93,14 @@ const SideBar = () => {
             delay={1}
             variant="accent"
             fontFamily='Inter'
-            fontWeight="light"
-            fontSize={24}
+            fontWeight="500"
+            fontSize={20}
           >
             Hello there!! I am
+            <MotionText variant="emphasis" as="span">
+              {' '}
+              <br />
+            </MotionText>
           </MotionText>
           <MotionHeading
             as="h2"
@@ -123,6 +127,7 @@ const SideBar = () => {
             }}
             variants={letterSpaceBig}
             fontFamily={'Mont'}
+            color={borderColor}
           >
             Siva
           </MotionHeading>
