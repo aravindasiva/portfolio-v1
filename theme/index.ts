@@ -156,4 +156,4 @@ const overrides = {
   },
 }
 
-export default extendTheme({overrides, config})
+export default extendTheme({overrides, config, colors})
