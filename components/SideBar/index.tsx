@@ -100,6 +100,7 @@ const SideBar = () => {
           </MotionText>
           <MotionHeading
             as="h2"
+            cursor='pointer'
             size={surNameSize}
             variant="emphasis"
             fontFamily={'Mont'}
@@ -113,12 +114,13 @@ const SideBar = () => {
           <MotionHeading
             className={styles.marginTopForce}
             as="h2"
+            cursor='pointer'
             size="4xl"
-            // w={68}
-            // paddingRight={{ lg: '20' }}
+            paddingRight={{ lg: '20' }}
             textTransform="uppercase"
-            whileHover={iconScale}
-            // whileHover={{ scale: 1.4, x: 90 }}
+            whileTap={{
+              letterSpacing: ['0px', '10px', '0px'],
+            }}
             variants={letterSpaceBig}
             fontFamily={'Mont'}
           >
