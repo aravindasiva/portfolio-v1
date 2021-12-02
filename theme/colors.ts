@@ -65,9 +65,9 @@ const Colors = {
     light: '#808191',
     label: '#12364F'
   },
-  primary: {
-    light: '#52734D',
-    dark: '#91C788'
+  site: {
+    light: '#E23E57',
+    dark: '#3FC1C9'
   }
 }
 

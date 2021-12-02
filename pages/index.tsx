@@ -1,5 +1,6 @@
 import {
   Box,
+  Center,
   Grid,
   GridItem,
   Stack,
@@ -7,12 +8,13 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 import ScrollHelper from '../components/ScrollHelper'
-import ScrollMore from '../components/ScrollHelper'
-import Section1 from '../components/Section1'
 import Section2 from '../components/Section2'
 import Section3 from '../components/Section3'
 import SideBar from '../components/SideBar'
 import SiteHeader from '../components/SiteHeader'
+import SiteAvatar from '../components/SiteAvatar'
+import FadeLayout from '../components/FadeLayout'
+import About from '../components/About'
 
 export default function Home() {
 
@@ -60,17 +62,24 @@ export default function Home() {
           overflow="hidden"
         >
           <Stack w="100" spacing={24}>
-            <Box
-              id="aboutMe"
-              paddingTop={{ base: 0, lg: 20, xl: 0 }}
-              paddingBottom={{ base: 12, lg: 0 }}
-              flexDirection={{
-                base: 'column-reverse',
-                lg: 'row',
-              }}
-            >
-              <Section1 />
-            </Box>
+            <FadeLayout>
+              <Box
+                id="aboutMe"
+                className="contentRow"
+                minH={{ lg: '80vh' }}
+                display="flex"
+                alignItems="center"
+                paddingTop={{ base: 0, lg: 20, xl: 0 }}
+                paddingBottom={{ base: 12, lg: 0 }}
+                flexDirection={{
+                  base: 'column-reverse',
+                  lg: 'row',
+                }}
+              >
+                  <About />
+                  <SiteAvatar/>
+              </Box>
+            </FadeLayout>
 
             <Box
               id="jobs"

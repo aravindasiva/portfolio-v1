@@ -57,7 +57,7 @@ const letterSpaceBig = {
     opacity: 0,
   },
   animate: {
-    letterSpacing: ['0px','20px',  '0px'],
+    letterSpacing: ['0px', '20px', '0px'],
     opacity: 1,
     transition: {
       duration: DURATIONS.SlowAf,
@@ -135,6 +135,17 @@ const menuAnim = {
   },
 }
 
+const handWave = {
+  animate: {
+    opacity: [0, 1],
+    rotate: [0, 20, 0],
+    transition: {
+      duration: DURATIONS.VerySlow,
+      ease: easing,
+    },
+  },
+}
+
 const avatarAnimation = {
   initial: {
     opacity: 0,
@@ -172,6 +183,7 @@ export {
   DURATIONS,
   easing,
   fadeInUp,
+  handWave,
   fadeInUpSlower,
   letterSpace,
   letterSpaceBig,

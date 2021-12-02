@@ -11,13 +11,15 @@ import {
   useBreakpointValue,
   useColorModeValue,
   HStack,
+  Tooltip,
 } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import React from 'react'
 import { useInView } from 'react-intersection-observer'
-import { fadeInUp, fadeInUpSlower, iconScale, letterSpace, letterSpaceBig, simpleOpacity, stagger } from '../../config/animation'
+import { fadeInUp, fadeInUpSlower, handWave, iconScale, letterSpace, letterSpaceBig, simpleOpacity, stagger } from '../../config/animation'
 import { SocialMedias } from '../../config/sideBar'
 import styles from './styles.module.css'
+
 
 const SideBar = () => {
 
@@ -54,7 +56,7 @@ const SideBar = () => {
   }
 
   const { colorMode } = useColorMode()
-  const borderColor = useColorModeValue("#E23E57", "#3FC1C9");
+  const borderColor = useColorModeValue("site.light", "site.dark");
   const surNameSize = useBreakpointValue({ base: '3xl', md: '4xl' })
   const display = useBreakpointValue({ base: 'none', lg: 'block' })
   const MotionBox = motion(Box)
@@ -88,20 +90,61 @@ const SideBar = () => {
         alignItems={{ xl: 'center' }}
       >
         <MotionStack variants={stagger} spacing={6} w="100">
-          <MotionText
-            variants={fadeInUp}
-            delay={1}
-            variant="accent"
-            fontFamily='Inter'
-            fontWeight="500"
-            fontSize={20}
-          >
-            Hello there!! I am
-            <MotionText variant="emphasis" as="span">
-              {' '}
-              <br />
+          <HStack>
+            <MotionText
+              variants={fadeInUp}
+              delay={1}
+              variant="accent"
+              fontFamily='Inter'
+              fontWeight="500"
+              fontSize={20}
+            >
+              Hello there
+              {/* !! I am */}
             </MotionText>
-          </MotionText>
+            <Tooltip
+              placement='top'
+              label='High five ??'
+              hasArrow
+              borderRadius={8}
+            >
+              <MotionText
+                cursor='grab'
+                variants={fadeInUp}
+                delay={1}
+                variant="accent"
+                fontFamily='Inter'
+                fontWeight="500"
+                fontSize={22}
+                animate={{
+                  rotate: 20,
+                  transition: {
+                    from: 0,
+                    duration: 0.3,
+                    ease: 'easeInOut',
+                    type: 'tween',
+                    yoyo: Infinity
+                  },
+                }}
+                whileTap={{
+                  rotate: 50,
+                  scale: 6,
+                }}
+              >
+                👋🏻
+              </MotionText>
+            </Tooltip>
+            <MotionText
+              variants={fadeInUp}
+              delay={1}
+              variant="accent"
+              fontFamily='Inter'
+              fontWeight="500"
+              fontSize={22}
+            >
+              {'   I am'}
+            </MotionText>
+          </HStack>
           <MotionHeading
             as="h2"
             cursor='pointer'
