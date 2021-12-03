@@ -165,7 +165,7 @@ const SiteHeader = () => {
         overflowY="hidden"
       >
         <chakra.div h="4.5rem" mx="auto" >
-          <Flex w="full" h="full" px={{ base: 6, sm: "20" }} align="center" justify="space-between">
+          <Flex w="full" h="full" px={{ base: 6, sm: 24 }} align="center" justify="space-between">
             <Flex align="center">
               <AnimatePresence>
                 <Link activeClass="active" to="aboutMe" spy={true} smooth={true} duration={1000}>
