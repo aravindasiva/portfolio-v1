@@ -170,7 +170,7 @@ const SiteHeader = () => {
               <AnimatePresence>
                 <Link activeClass="active" to="aboutMe" spy={true} smooth={true} duration={1000}>
                   <MotionImage
-                    boxSize={{ base: '30px', sm: '50px', lg: '50px' }}
+                    boxSize={{ base: '30px', sm: '60px', lg: '60px' }}
                     objectFit="cover"
                     src={imgLogo}
                     alt="Siva Logo"
