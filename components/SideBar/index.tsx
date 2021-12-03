@@ -235,7 +235,7 @@ const SideBar = () => {
 
           <HStack>
             {SocialMedias.map((socMedia) => (
-              <MotionBox d="flex" variants={simpleOpacity} whileHover={{ scale: 1.5 }}>
+              <MotionBox id={socMedia.href} d="flex" variants={simpleOpacity} whileHover={{ scale: 1.5 }}>
                 <Link
                   variant="description"
                   key={socMedia.label}

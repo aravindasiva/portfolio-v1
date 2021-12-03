@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   chakra,
   Flex,
@@ -11,6 +11,7 @@ import {
   CloseButton,
   Box,
   VStack,
+  Image,
   Button,
   Text,
   Container
@@ -26,18 +27,31 @@ import {
 } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import useScrollDirection from "../../hooks/useScrollDirection";
-import { easing, menuAnim, scaleUp } from "../../config/animation";
+import { easing, menuAnim, scaleUp, simpleOpacity } from "../../config/animation";
+
+
+const LogoImages = {
+  DarkMode: '/logo_dark.png',
+  LightMode: './logo_light.png',
+}
+
 
 const SiteHeader = () => {
   const direction = useScrollDirection()
   const mobileNav = useDisclosure();
   const MotionBox = motion(Box)
+  const [isLogoLoaded, setLogoLoaded] = useState(false)
+  const imgLogo = useColorModeValue(
+    LogoImages.LightMode,
+    LogoImages.DarkMode
+  )
 
   const { toggleColorMode: toggleMode } = useColorMode();
   const text = useColorModeValue("dark", "light");
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const { colorMode } = useColorMode()
   const MotionContainer = motion(Container)
+  const MotionImage = motion(Image)
 
   const bg = useColorModeValue("white", "gray.800");
   const ref = React.useRef<HTMLInputElement>();
@@ -153,9 +167,22 @@ const SiteHeader = () => {
         <chakra.div h="4.5rem" mx="auto" >
           <Flex w="full" h="full" px={{ base: 6, sm: "20" }} align="center" justify="space-between">
             <Flex align="center">
-              <HStack>
-                <Box>Logo</Box>
-              </HStack>
+              <AnimatePresence>
+                <Link activeClass="active" to="aboutMe" spy={true} smooth={true} duration={1000}>
+                  <MotionImage
+                    boxSize={{ base: '30px', sm: '50px', lg: '50px' }}
+                    objectFit="cover"
+                    src={imgLogo}
+                    alt="Siva Logo"
+                    fallbackSrc={imgLogo}
+                    variants={simpleOpacity}
+                    initial="initial"
+                    animate={isLogoLoaded && 'animate'}
+                    onLoad={() => setLogoLoaded(true)}
+                    zIndex={2}
+                  />
+                </Link>
+              </AnimatePresence>
             </Flex>
 
             <Flex
