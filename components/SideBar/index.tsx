@@ -104,7 +104,7 @@ const SideBar = () => {
             </MotionText>
             <Tooltip
               placement='top'
-              label='High five ??'
+              label='High five 🖐️ ??'
               hasArrow
               borderRadius={8}
             >
