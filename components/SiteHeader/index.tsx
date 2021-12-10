@@ -14,11 +14,13 @@ import {
   Image,
   Button,
   Text,
-  Container
+  Container,
+  textDecoration,
+  Center
 } from "@chakra-ui/react";
 import { Link } from 'react-scroll';
 import { AnimatePresence, motion, useViewportScroll } from "framer-motion";
-import { FaMoon, FaSun, FaHeart } from "react-icons/fa";
+import { BiMoon, BiSun } from "react-icons/bi";
 import {
   AiFillGithub,
   AiOutlineMenu,
@@ -48,7 +50,9 @@ const SiteHeader = () => {
 
   const { toggleColorMode: toggleMode } = useColorMode();
   const text = useColorModeValue("dark", "light");
-  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+  const headerTextColor = useColorModeValue("site.light", "site.dark");
+  const reverseSwitchColor = useColorModeValue("site.dark", "site.light");
+  const SwitchIcon = useColorModeValue(BiMoon, BiSun);
   const { colorMode } = useColorMode()
   const MotionContainer = motion(Container)
   const MotionImage = motion(Image)
@@ -86,17 +90,17 @@ const SiteHeader = () => {
         onClick={mobileNav.onClose}
       />
       <Link activeClass="active" to='siteHeader' spy={true} smooth={true} duration={1000}>
-        <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
+        <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: colorMode }}>
           About
         </Text>
       </Link>
       <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
-        <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
-          Experience
+        <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: colorMode }}>
+          Works
         </Text>
       </Link>
       <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
-        <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
+        <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: colorMode }}>
           Contact
         </Text>
       </Link>
@@ -123,19 +127,21 @@ const SiteHeader = () => {
         m={2}
         spacing={6}
         alignItems='flex-start'
+        fontFamily={'Inter'}
+        fontWeight={500}
       >
         <Link activeClass="active" to='siteHeader' spy={true} smooth={true} duration={1000}>
-          <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
+          <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine:"line-through" }}>
             About
           </Text>
         </Link>
         <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
-          <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
-            Experience
+          <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine:"line-through" }}>
+            Works
           </Text>
         </Link>
         <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
-          <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: 'blue' }}>
+          <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine:"line-through" }}>
             Contact
           </Text>
         </Link>
@@ -145,6 +151,7 @@ const SiteHeader = () => {
           aria-label={`Switch to ${text} mode`}
           variant="ghost"
           color="current"
+          _hover={{color: reverseSwitchColor}}
           isRound
           ml={{ base: "0", md: "3" }}
           onClick={toggleMode}
@@ -191,66 +198,91 @@ const SiteHeader = () => {
               w="full"
               maxW="824px"
               align="center"
-              color="gray.400"
+              fontFamily={'Inter'}
+              fontWeight={600}
             >
-              <HStack spacing="5" display={{ base: "none", md: "flex" }}>
+              <HStack spacing="12" display={{ base: "none", md: "flex" }}>
                 <Link activeClass="active" to="section1" spy={true} smooth={true} duration={1000}>
-                  <Text as={'a'} cursor="pointer" _hover={{ color: 'blue' }}>
-                    Section 1
-                  </Text>
-                </Link>
-                <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
-                  <Text as={'a'} cursor="pointer" _hover={{ color: 'blue' }}>
-                    Section 2
-                  </Text>
-                </Link>
-                <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
-                  <Text as={'a'} cursor="pointer" _hover={{ color: 'blue' }}>
-                    Section 3
-                  </Text>
-                </Link>
-              </HStack>
-              <IconButton
-                size="md"
-                isRound
-                fontSize="lg"
-                aria-label={`Switch to ${text} mode`}
-                variant="ghost"
-                color="current"
-                ml={{ base: "0", md: "3" }}
-                onClick={toggleMode}
-                icon={<SwitchIcon size={26} />}
-              />
-              <IconButton
-                display={{ base: "flex", md: "none" }}
-                aria-label="Open menu"
-                fontSize="20px"
-                color={useColorModeValue("gray.800", "inherit")}
-                variant="ghost"
-                icon={<AiOutlineMenu />}
-                onClick={mobileNav.onOpen}
-              />
-            </Flex>
+                  <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine:"line-through"}}>
+                  About
+                </Text>
+              </Link>
+              <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
+                <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine:"line-through" }}>
+                  Works
+                </Text>
+              </Link>
+              <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
+                <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine:"line-through" }}>
+                  Contact
+                </Text>
+              </Link>
+              <motion.div
+                whileHover={{
+                  scale: 1.2,
+                  transition:{
+                    duration: 0.8,
+                    yoyo: Infinity
+                  }
+                }}
+              >
+                  <IconButton
+                    size="md"
+                    isRound
+                    fontSize="lg"
+                    aria-label={`Switch to ${text} mode`}
+                    variant="ghost"
+                    color="current"
+                    _hover={{color: reverseSwitchColor}}
+                    ml={{ base: "0", md: "3" }}
+                    onClick={toggleMode}
+                    icon={<SwitchIcon size={24} />}
+                  />
+              </motion.div>
+            </HStack>
+            <IconButton
+              display={{ base: "flex", md: "none" }}
+              size="md"
+              isRound
+              fontSize="lg"
+              aria-label={`Switch to ${text} mode`}
+              variant="ghost"
+              color="current"
+              _hover={{color: reverseSwitchColor}}
+              ml={{ base: "0", md: "3" }}
+              onClick={toggleMode}
+              icon={<SwitchIcon size={24} />}
+            />
+            <IconButton
+              display={{ base: "flex", md: "none" }}
+              aria-label="Open menu"
+              fontSize="20px"
+              color={useColorModeValue("gray.800", "inherit")}
+              variant="ghost"
+              icon={<AiOutlineMenu />}
+              onClick={mobileNav.onOpen}
+            />
           </Flex>
-          {MobileNavContent}
-          <MotionBox
-            id={direction.isTop}
-            initial='hide'
-            animate='show'
-            ease={easing}
-            variant={menuAnim}
+        </Flex>
+        {MobileNavContent}
+        <MotionBox
+          id={direction.isTop}
+          initial='hide'
+          animate='show'
+          ease={easing}
+          variant={menuAnim}
+        >
+          <motion.div
+            id="side nav"
+            animate={colorMode === 'dark' ? 'animate' : 'lightMode'}
           >
-            <motion.div
-              id="side nav"
-              animate={colorMode === 'dark' ? 'animate' : 'lightMode'}
-            >
-              {SideNav}
-            </motion.div>
-          </MotionBox >
+            {SideNav}
+          </motion.div>
+        </MotionBox >
 
-        </chakra.div>
-      </chakra.header>
-    </Box>
+      </chakra.div>
+    </chakra.header>
+    </Box >
   );
 };
 

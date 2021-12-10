@@ -74,7 +74,7 @@ const ScrollHelper = () => {
               w={6}
               h={6}
               as={RiMouseLine}
-              color="currentColor"
+              color={emailLine}
               opacity="0.75"
             />
           </motion.div>
