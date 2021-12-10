@@ -11,7 +11,6 @@ import {
   Tooltip,
   Stack,
   useColorModeValue,
-  useColorMode,
 } from '@chakra-ui/react'
 import {
   SiDotnet,
@@ -31,7 +30,7 @@ type ISkillSetModal = {
 }
 
 const About = () => {
-  const baseTheme = useColorModeValue('dark','light')
+  const baseTheme = useColorModeValue('dark', 'light')
   const siteColor = useColorModeValue("site.light", "site.dark");
   const fontTheme = useColorModeValue("", "gray.300")
   const currentYear = new Date().getFullYear()
@@ -48,21 +47,36 @@ const About = () => {
       >
         who am i
       </Heading>
-      <Text color={fontTheme}>
-        I`ve been coding for {codingYears} years now and
-        currently working as a <b>Full Stack Developer</b> {' '} 
-        <Tooltip
-          label="Ha!. Or more accurately TECH DEBT"
-          aria-label="Tech Debt?"
+      <Text 
+      color={fontTheme}
+      fontFamily={'Inter'}
+      fontSize={14}
+      >
+        I've been coding for {codingYears} years now and
+        currently working as a
+        <Tooltip 
+          label='Not an expert, always got room to learn 🤓'
+          aria-lable='Expert?'
           hasArrow
+          borderRadius={8}
+        >
+          <Text as={'span'}>
+            <b>{' '}Full Stack Developer</b>
+          </Text>
+        </Tooltip> {' '} focusing on frontend web development and mobile development. <br /> <br /> Even
+        <Tooltip
+          label="I've no idea what I am doing, but it's fun 🥳"
+          aria-label="No Idea"
+          hasArrow
+          borderRadius={8}
         >
           <Text as="span" variant="siteColor">
-            <b>nitty-gritty business logics</b>
+            {' '}<b>3D model integration, WebGL</b>
           </Text>
         </Tooltip>{' '}
-        and even <b>front end integration</b> stuff now, how time flies!
+        stuff now, how time flies!
         <br /> <br />
-        Here are few technologies that are cup of my{' '}
+        Here are few technologies that are my cup of{' '}
         <Tooltip
           label="I only drink tea if I needed too!"
           aria-label="I hate Tea!"
