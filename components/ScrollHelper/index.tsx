@@ -53,7 +53,7 @@ const emailVariants: Variants = {
 
 const ScrollHelper = () => {
   const emailColor = useColorModeValue('gray.800', 'gray.400')
-  const emailLine = useColorModeValue('teal.500', 'cyan.200')
+  const emailLine = useColorModeValue("site.light", "site.dark")
   const direction = useScrollDirection()
 
   return (
