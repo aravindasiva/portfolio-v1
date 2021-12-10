@@ -131,32 +131,42 @@ const SiteHeader = () => {
         fontWeight={500}
       >
         <Link activeClass="active" to='siteHeader' spy={true} smooth={true} duration={1000}>
-          <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine:"line-through" }}>
+          <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
             About
           </Text>
         </Link>
         <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
-          <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine:"line-through" }}>
+          <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
             Works
           </Text>
         </Link>
         <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
-          <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine:"line-through" }}>
+          <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
             Contact
           </Text>
         </Link>
-        <IconButton
-          size="md"
-          fontSize="lg"
-          aria-label={`Switch to ${text} mode`}
-          variant="ghost"
-          color="current"
-          _hover={{color: reverseSwitchColor}}
-          isRound
-          ml={{ base: "0", md: "3" }}
-          onClick={toggleMode}
-          icon={<SwitchIcon size={24} />}
-        />
+        <motion.div
+          whileHover={{
+            scale: 1.2,
+            transition: {
+              duration: 0.8,
+              yoyo: Infinity
+            }
+          }}
+        >
+          <IconButton
+            size="md"
+            fontSize="lg"
+            aria-label={`Switch to ${text} mode`}
+            variant="ghost"
+            color="current"
+            _hover={{ color: reverseSwitchColor }}
+            isRound
+            ml={{ base: "0", md: "3" }}
+            onClick={toggleMode}
+            icon={<SwitchIcon size={24} />}
+          />
+        </motion.div>
       </VStack>
     </MotionContainer>
   )
@@ -203,29 +213,29 @@ const SiteHeader = () => {
             >
               <HStack spacing="12" display={{ base: "none", md: "flex" }}>
                 <Link activeClass="active" to="section1" spy={true} smooth={true} duration={1000}>
-                  <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine:"line-through"}}>
-                  About
-                </Text>
-              </Link>
-              <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
-                <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine:"line-through" }}>
-                  Works
-                </Text>
-              </Link>
-              <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
-                <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine:"line-through" }}>
-                  Contact
-                </Text>
-              </Link>
-              <motion.div
-                whileHover={{
-                  scale: 1.2,
-                  transition:{
-                    duration: 0.8,
-                    yoyo: Infinity
-                  }
-                }}
-              >
+                  <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
+                    About
+                  </Text>
+                </Link>
+                <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
+                  <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
+                    Works
+                  </Text>
+                </Link>
+                <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
+                  <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
+                    Contact
+                  </Text>
+                </Link>
+                <motion.div
+                  whileHover={{
+                    scale: 1.2,
+                    transition: {
+                      duration: 0.8,
+                      yoyo: Infinity
+                    }
+                  }}
+                >
                   <IconButton
                     size="md"
                     isRound
@@ -233,55 +243,56 @@ const SiteHeader = () => {
                     aria-label={`Switch to ${text} mode`}
                     variant="ghost"
                     color="current"
-                    _hover={{color: reverseSwitchColor}}
+                    _hover={{ color: reverseSwitchColor }}
+                    _focus={{ outline: 'none' }}
                     ml={{ base: "0", md: "3" }}
                     onClick={toggleMode}
                     icon={<SwitchIcon size={24} />}
                   />
-              </motion.div>
-            </HStack>
-            <IconButton
-              display={{ base: "flex", md: "none" }}
-              size="md"
-              isRound
-              fontSize="lg"
-              aria-label={`Switch to ${text} mode`}
-              variant="ghost"
-              color="current"
-              _hover={{color: reverseSwitchColor}}
-              ml={{ base: "0", md: "3" }}
-              onClick={toggleMode}
-              icon={<SwitchIcon size={24} />}
-            />
-            <IconButton
-              display={{ base: "flex", md: "none" }}
-              aria-label="Open menu"
-              fontSize="20px"
-              color={useColorModeValue("gray.800", "inherit")}
-              variant="ghost"
-              icon={<AiOutlineMenu />}
-              onClick={mobileNav.onOpen}
-            />
+                </motion.div>
+              </HStack>
+              <IconButton
+                display={{ base: "flex", md: "none" }}
+                size="md"
+                isRound
+                fontSize="lg"
+                aria-label={`Switch to ${text} mode`}
+                variant="ghost"
+                color="current"
+                _hover={{ color: reverseSwitchColor }}
+                ml={{ base: "0", md: "3" }}
+                onClick={toggleMode}
+                icon={<SwitchIcon size={24} />}
+              />
+              <IconButton
+                display={{ base: "flex", md: "none" }}
+                aria-label="Open menu"
+                fontSize="20px"
+                color={useColorModeValue("gray.800", "inherit")}
+                variant="ghost"
+                icon={<AiOutlineMenu />}
+                onClick={mobileNav.onOpen}
+              />
+            </Flex>
           </Flex>
-        </Flex>
-        {MobileNavContent}
-        <MotionBox
-          id={direction.isTop}
-          initial='hide'
-          animate='show'
-          ease={easing}
-          variant={menuAnim}
-        >
-          <motion.div
-            id="side nav"
-            animate={colorMode === 'dark' ? 'animate' : 'lightMode'}
+          {MobileNavContent}
+          <MotionBox
+            id={direction.isTop}
+            initial='hide'
+            animate='show'
+            ease={easing}
+            variant={menuAnim}
           >
-            {SideNav}
-          </motion.div>
-        </MotionBox >
+            <motion.div
+              id="side nav"
+              animate={colorMode === 'dark' ? 'animate' : 'lightMode'}
+            >
+              {SideNav}
+            </motion.div>
+          </MotionBox >
 
-      </chakra.div>
-    </chakra.header>
+        </chakra.div>
+      </chakra.header>
     </Box >
   );
 };
