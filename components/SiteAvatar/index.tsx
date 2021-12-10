@@ -5,14 +5,15 @@ import {
   Link,
   SkeletonCircle,
   useColorModeValue,
+  Tooltip
 } from '@chakra-ui/react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { avatarAnimation } from '../../config/animation'
 
 const AvatarImages = {
-  DarkMode: '/siva_dark.png',
-  LightMode: './siva_light.png',
+  DarkMode: '/avatar_dark.png',
+  LightMode: './avatar_light.png',
 }
 
 declare global {
@@ -27,6 +28,7 @@ const SiteAvatar = () => {
     AvatarImages.LightMode,
     AvatarImages.DarkMode
   )
+  const themeTooltipLabel = useColorModeValue('Whoa, Soo Bright 😎', 'How you doin ??')
   useEffect(() => {
     // Some nice preloading and caching
     const images = [AvatarImages.DarkMode, AvatarImages.LightMode]
@@ -49,14 +51,23 @@ const SiteAvatar = () => {
         variants={avatarAnimation}
         exit={{ opacity: 0 }}
       >
-        <ChkImage
-          src={imgAvatar}
-          alt="Aravinda Siva"
-          htmlWidth="250"
-          htmlHeight="250"
-          margin="auto"
-          fallback={<SkeletonCircle height="100%" width="100%" />}
-        />
+        <Tooltip
+          label={themeTooltipLabel}
+          aria-label='dark and too bright'
+          hasArrow
+          borderRadius={8}
+          p={2}
+          placement='top'
+        >
+          <ChkImage
+            src={imgAvatar}
+            alt="Aravinda Siva"
+            htmlWidth="250"
+            htmlHeight="250"
+            margin="auto"
+            fallback={<SkeletonCircle height="100%" width="100%" />}
+          />
+        </Tooltip>
       </MotionBox>
     </AnimatePresence>
   )

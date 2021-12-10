@@ -53,7 +53,7 @@ const emailVariants: Variants = {
 
 const ScrollHelper = () => {
   const emailColor = useColorModeValue('gray.800', 'gray.400')
-  const emailLine = useColorModeValue('teal.500', 'cyan.200')
+  const emailLine = useColorModeValue("site.light", "site.dark")
   const direction = useScrollDirection()
 
   return (
@@ -74,7 +74,7 @@ const ScrollHelper = () => {
               w={6}
               h={6}
               as={RiMouseLine}
-              color="currentColor"
+              color={emailLine}
               opacity="0.75"
             />
           </motion.div>
