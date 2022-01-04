@@ -32,7 +32,7 @@ export const Experiences: {
     },
     roles: [
       <>
-        Started as a early member of PEGO, working on various cutting edge Technologies for Smart workplace and Hygiene.{' '}
+        Started as an early member of PEGO, working on various cutting edge Technologies for Smart workplace and Hygiene.{' '}
       </>,
       <>Worked on Apis, WebApps, and Cloud Services</>,
       <>WebGL and 3D model Integration to web</>

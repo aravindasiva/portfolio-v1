@@ -37,7 +37,7 @@ const GetInTouch = () => {
         </Text>
       </Heading>
       <Text variant="description">
-        Although I am working and doing fun projects on my free time, I do reply to messages as long as my social battery is up. Coding, work, movies or even weeb
+        Although I am working and doing fun projects in my free time, I do reply to messages as long as my social battery is up. Coding, work, movies or even
         games, design, or whatever. So don't be a stranger and drop a message on any socials or
         <Link
           href="mailto:aravindcva@hotmail.com"
