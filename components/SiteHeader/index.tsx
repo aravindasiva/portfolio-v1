@@ -94,12 +94,17 @@ const SiteHeader = () => {
           About
         </Text>
       </Link>
-      <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
+      <Link activeClass="active" to='jobs' spy={true} smooth={true} duration={1000}>
+        <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: colorMode }}>
+          Experience
+        </Text>
+      </Link>
+      <Link activeClass="active" to="works" spy={true} smooth={true} duration={1000}>
         <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: colorMode }}>
           Works
         </Text>
       </Link>
-      <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
+      <Link activeClass="active" to="contact" spy={true} smooth={true} duration={1000}>
         <Text as={'a'} cursor="pointer" fontSize={20} _hover={{ color: colorMode }}>
           Contact
         </Text>
@@ -135,12 +140,17 @@ const SiteHeader = () => {
             About
           </Text>
         </Link>
-        <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
+        <Link activeClass="active" to='jobs' spy={true} smooth={true} duration={1000}>
+          <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
+            Experience
+          </Text>
+        </Link>
+        <Link activeClass="active" to="works" spy={true} smooth={true} duration={1000}>
           <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
             Works
           </Text>
         </Link>
-        <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
+        <Link activeClass="active" to="contact" spy={true} smooth={true} duration={1000}>
           <Text as={'a'} cursor="pointer" fontSize={18} _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
             Contact
           </Text>
@@ -217,12 +227,17 @@ const SiteHeader = () => {
                     About
                   </Text>
                 </Link>
-                <Link activeClass="active" to="section2" spy={true} smooth={true} duration={1000}>
+                <Link activeClass="active" to="jobs" spy={true} smooth={true} duration={1000}>
+                  <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
+                    Experience
+                  </Text>
+                </Link>
+                <Link activeClass="active" to="works" spy={true} smooth={true} duration={1000}>
                   <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
                     Works
                   </Text>
                 </Link>
-                <Link activeClass="active" to="section3" spy={true} smooth={true} duration={1000}>
+                <Link activeClass="active" to="contact" spy={true} smooth={true} duration={1000}>
                   <Text as={'a'} cursor="pointer" _hover={{ color: headerTextColor, textDecorationLine: "line-through" }}>
                     Contact
                   </Text>
