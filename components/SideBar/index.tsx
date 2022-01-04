@@ -202,7 +202,7 @@ const SideBar = () => {
               {' '}
               Thank you!<br />
             </Text>
-            <br />I am Full Stack developer that specializes at frontend, backend integration, If you are lucky you can catch me doing some UX design.
+            <br />I am a Full Stack developer that specializes at frontend, backend integration, If you are lucky you can catch me doing some UX design.
           </MotionText>
           <MotionButton
             size="lg"
