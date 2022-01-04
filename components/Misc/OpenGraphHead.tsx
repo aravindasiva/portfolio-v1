@@ -13,7 +13,7 @@ const OpenGraphHead = () => (
     <meta property="og:type" content="profile" />
     <meta
       property="og:image"
-      content="https://aravindasiva.com/preview.png"
+      content="https://aravindasiva.com/demoSite.png"
     ></meta>
   </Head>
 )
