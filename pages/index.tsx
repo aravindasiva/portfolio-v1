@@ -18,6 +18,7 @@ import Experience from '../components/Experience'
 import Works from '../components/Works'
 import { Article } from '../types/article'
 import GetInTouch from '../components/GetInTouch'
+import OpenGraphHead from '../components/Misc/OpenGraphHead'
 
 const DevToArticles = dynamic(() => import('../components/DevToArticles'))
 
@@ -34,6 +35,7 @@ export default function Home({ articles }: { articles: Article[] }): JSX.Element
 
   return (
     <>
+      <OpenGraphHead />
       <SiteHeader />
       <Grid
         id="mainGrid"
@@ -82,8 +84,8 @@ export default function Home({ articles }: { articles: Article[] }): JSX.Element
                   lg: 'row',
                 }}
               >
-                  <About />
-                  <SiteAvatar/>
+                <About />
+                <SiteAvatar />
               </Box>
             </FadeLayout>
 
@@ -98,7 +100,7 @@ export default function Home({ articles }: { articles: Article[] }): JSX.Element
                 paddingX={0}
                 flexDirection={'row'}
               >
-                  <Experience />
+                <Experience />
               </Box>
             </FadeLayout>
 
