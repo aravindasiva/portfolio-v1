@@ -38,7 +38,7 @@ const Works = () => {
         Some of my works.
       </Heading>
       <Text variant="description">
-        Hey! Here are some of my works I do on my
+        Hey! Here are some of my works I do in my
         <Tooltip
           label="yes, I have social life too, now stop judging 🤨"
           aria-label="social life"
