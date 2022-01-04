@@ -7,7 +7,7 @@ import { fadeInUpSlower } from '../../config/animation'
 const FadeLayout = ({ children }) => {
   const controls = useAnimation()
   const [ref, inView] = useInView({
-    threshold: 0.3,
+    threshold: 0,
   })
 
   useEffect(() => {
