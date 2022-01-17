@@ -93,7 +93,7 @@ const Works = () => {
             description="A NextJS project consuming Demotivation quotes API showing random quotes everytime requested. This project also uses Framer Motion for animation."
             src="/works/works_negativeSpace.gif"
             height={{ base: '130px', md: '225px', '2xl': '300px' }}
-            ctaUrl="https://dev.agora-school.com"
+            ctaUrl="https://negative-space.netlify.app"
             objectPosition="left 20%"
             isMobile={isMobile}
           />
